@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Battle() {
     //set state to update playerPoints and enemyPoints, both start at 100
-    const [points, setPoints] = useState({ playerPoints: 100, enemyPoints: 100 });
+    const [points, setPoints] = useState({ playerPoints: 100, enemyPoints: 100, message: "In the cold expanse, only the bold survive. Ready… aim… fire!" });
     //create random num generator to generate random damage
     function randomDamage() {
         return Math.floor(Math.random() * 100);
@@ -22,9 +22,17 @@ function Battle() {
 
     return (
         <div>
-            <span>Player Health: {points.playerPoints}</span>
-            <button className="fire" onClick={applyDamage}>Fire</button>
-            <span>Enemy Health: {points.enemyPoints}</span>
+            <div>
+                <h1>Space Battle Simulator</h1>
+            </div>
+            <div>
+                <span>Player Health: {points.playerPoints}</span>
+                <button className="fire" onClick={applyDamage}>Fire</button>
+                <span>Enemy Health: {points.enemyPoints}</span>
+            </div>
+            <div>
+                <p className="message">{points.message}</p>
+            </div>
         </div>
     )
 }

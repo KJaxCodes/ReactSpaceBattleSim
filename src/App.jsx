@@ -10,9 +10,6 @@ function App() {
   return (
     <>
       <div>
-        <h1>Space Battle Simulator</h1>
-      </div>
-      <div>
         <Battle />
       </div>
       <div>

@@ -73,3 +73,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.message {
+  color: white;
+  border: 3px dashed white;
+  padding: 2em;
+  margin-top: 10em;
+}
