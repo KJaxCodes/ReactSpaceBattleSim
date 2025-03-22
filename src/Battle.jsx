@@ -17,7 +17,7 @@ function Battle() {
 
     //do i need a separate button that is a reset button?
     function reset() {
-        setPoints({ playerPoints: 100, enemyPoints: 100 })
+        setPoints({ playerPoints: 100, enemyPoints: 100, message: "In the cold expanse, only the bold survive. Ready... aim... fire!" })
     }
 
     return (
@@ -26,9 +26,9 @@ function Battle() {
                 <h1>Space Battle Simulator</h1>
             </div>
             <div>
-                <span>Player Health: {points.playerPoints}</span>
+                <span className="player">Player Health: {points.playerPoints}</span>
                 <button className="fire" onClick={applyDamage}>Fire</button>
-                <span>Enemy Health: {points.enemyPoints}</span>
+                <span className="enemy">Enemy Health: {points.enemyPoints}</span>
             </div>
             <div>
                 <p className="message">{points.message}</p>
