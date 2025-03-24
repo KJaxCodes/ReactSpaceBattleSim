@@ -8,17 +8,11 @@ function App() {
 
 
   return (
-    <>
-      <div>
-        <Battle />
-      </div>
-      <div>
-        {/* {GameMessage} */}
-      </div>
 
+    <div>
+      <Battle />
+    </div>
 
-
-    </>
   )
 }
 

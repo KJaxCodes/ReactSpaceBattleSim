@@ -1,24 +1,45 @@
 import { useState } from "react";
+// my components //
+import Message from "./Message";
+import GameButton from "./GameButton";
 
 function Battle() {
     //set state to update playerPoints and enemyPoints, both start at 100
-    const [points, setPoints] = useState({ playerPoints: 100, enemyPoints: 100, message: "In the cold expanse, only the bold survive. Ready… aim… fire!" });
+    const [points, setPoints] = useState({ playerPoints: 100, enemyPoints: 100 });
+    const [gameState, setGameState] = useState({ message: "In the cold expanse, only the bold survive. Start game!", status: "inactive" });
+
     //create random num generator to generate random damage
     function randomDamage() {
         return Math.floor(Math.random() * 100);
     }
+    //handle start button clicked
+    function handleStartGame() {
+        setGameState({ status: "active", message: "Defend yourself!" })
+    }
 
+    //handle reset button clicked
+    function handleResetGame() {
+        setGameState({ status: "active", message: "Defend yourself!" })
+        setPoints({ playerPoints: 100, enemyPoints: 100 })
+    }
 
     //fire button onclick function that will copy the points objects and update it with the randomDamage
-    function applyDamage() {
+    function handleDamage() {
         const newPoints = { ...points, playerPoints: points.playerPoints - randomDamage(), enemyPoints: points.enemyPoints - randomDamage() }
-        setPoints(newPoints);
+        console.log(newPoints);
+        if (newPoints.enemyPoints < 0 || newPoints.playerPoints < 0) {
+            //the game is over
+            setGameState({ status: "over", message: "Game Over" });
+            setPoints(newPoints);
+        } else {
+            setPoints(newPoints);
+        }
     }
 
-    //do i need a separate button that is a reset button?
-    function reset() {
-        setPoints({ playerPoints: 100, enemyPoints: 100, message: "In the cold expanse, only the bold survive. Ready... aim... fire!" })
-    }
+    // //do i need a separate button that is a reset button?
+    // function reset() {
+    //     setPoints({ playerPoints: 100, enemyPoints: 100 })
+    // }
 
     return (
         <div>
@@ -27,11 +48,22 @@ function Battle() {
             </div>
             <div>
                 <span className="player">Player Health: {points.playerPoints}</span>
-                <button className="fire" onClick={applyDamage}>Fire</button>
+                <GameButton
+                    status={gameState.status}
+                    handleStartGame={handleStartGame}
+                    handleResetGame={handleResetGame}
+                    handleDamage={handleDamage}
+                />
                 <span className="enemy">Enemy Health: {points.enemyPoints}</span>
             </div>
             <div>
-                <p className="message">{points.message}</p>
+                <p className="message">{gameState.message}</p>
+            </div>
+            <div>
+                <Message
+                    playerPoints={points.playerPoints}
+                    enemyPoints={points.enemyPoints}
+                />
             </div>
         </div>
     )

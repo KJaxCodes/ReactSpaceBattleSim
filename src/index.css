@@ -38,20 +38,32 @@ h1 {
 
 button {
   border-radius: 50%;
-  border: 10px solid red;
   margin: 10px;
   padding: 1em;
   font-size: 2em;
   font-weight: 500;
   font-family: inherit;
-  background-color: orange;
   cursor: pointer;
   transition: border-color 0.25s;
+}
 
+.start {
+  border: 10px solid green;
+  background-color: greenyellow;
+}
+
+.fire {
+  border: 10px solid red;
+  background-color: orange;
+}
+
+.reset {
+  border: 10px solid white;
+  background-color: lightblue;
 }
 
 button:hover {
-  border-color: #646cff;
+  border-color: #e6ff07;
 }
 
 button:focus,
