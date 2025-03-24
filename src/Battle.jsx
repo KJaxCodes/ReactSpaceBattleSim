@@ -20,10 +20,13 @@ function Battle() {
     //handle reset button clicked
     function handleResetGame() {
         setGameState({ status: "active", message: "Defend yourself!" })
+        //game starts with player and enemy at 100
         setPoints({ playerPoints: 100, enemyPoints: 100 })
     }
 
-    //fire button onclick function that will copy the points objects and update it with the randomDamage
+    //fire button onclick function that will copy the points objects and update it with the randomDamage, 
+    // use conditional to show game over if one or both lose
+
     function handleDamage() {
         const newPoints = { ...points, playerPoints: points.playerPoints - randomDamage(), enemyPoints: points.enemyPoints - randomDamage() }
         console.log(newPoints);
@@ -35,11 +38,6 @@ function Battle() {
             setPoints(newPoints);
         }
     }
-
-    // //do i need a separate button that is a reset button?
-    // function reset() {
-    //     setPoints({ playerPoints: 100, enemyPoints: 100 })
-    // }
 
     return (
         <div>

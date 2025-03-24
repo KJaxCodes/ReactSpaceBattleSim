@@ -1,4 +1,4 @@
-//This component conditionally renders a message based on game state
+//Dumb component that conditionally renders a message based on game state
 
 function Message({ playerPoints, enemyPoints }) {
     if (playerPoints > 0 && enemyPoints < 0) {

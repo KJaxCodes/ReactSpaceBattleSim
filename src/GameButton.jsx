@@ -1,3 +1,5 @@
+//dumb component that aborbs and handles logcs to conditionally render button based on game state
+
 function GameButton({ status, handleStartGame, handleResetGame, handleDamage }) {
     if (status === "inactive") {
         // render the start button //
